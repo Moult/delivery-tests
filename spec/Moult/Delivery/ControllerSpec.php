@@ -6,7 +6,6 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use GuzzleHttp\Psr7\ServerRequest as Request;
 use GuzzleHttp\Psr7\Response;
-use Moult\Delivery\Redirect;
 
 class ControllerSpec extends ObjectBehavior
 {

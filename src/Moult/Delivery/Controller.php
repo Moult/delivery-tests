@@ -5,7 +5,6 @@ namespace Moult\Delivery;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use GuzzleHttp\Psr7;
-use Moult\Delivery\Redirect;
 
 class Controller
 {
@@ -33,9 +32,7 @@ class Controller
             $this->response = $this->response
                 ->withStatus(200)
                 ->withBody(Psr7\stream_for(
-                    $this->renderer->render(
-                        'template', $view
-                    )
+                    $this->renderer->render('template', $view)
                 ));
         }
         catch (\Exception $e)
@@ -53,9 +50,7 @@ class Controller
         $data->c = $this->request->getParsedBody()['c'];
 
         return $this->loader->load('User\View', [
-            'Usecase\User\View' => [
-                'Data\Data' => $data
-            ]
+            'Usecase\User\View' => ['Data\Data' => $data]
         ])->execute();
     }
 }
